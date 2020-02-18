@@ -5,16 +5,16 @@ import PropTypes from 'prop-types'
 import { getRoutes, getAirports, addRoute, deleteRoute } from '../store/actions/AppActions'
 import { Select, Icon, Button } from 'antd'
 
-const { Option } = Select 
+const { Option } = Select
 
 const RoutesListComponent = (props) => {
 
     const { RouteList, AirportList } = props
-    const [ RouteListArray, setRouteListArray ] = useState([])
-    const [ AirportListArray, setAirportListArray ] = useState([])
-    const [ fromStation, setFromStation ] = useState(null)
-    const [ toStation, setToStation ] = useState(null)
-    
+    const [RouteListArray, setRouteListArray] = useState([])
+    const [AirportListArray, setAirportListArray] = useState([])
+    const [fromStation, setFromStation] = useState(null)
+    const [toStation, setToStation] = useState(null)
+
 
     /** @description Similar to componentDidMount. Call only after rendering the component
      *  @param {object} callBack function
@@ -30,13 +30,13 @@ const RoutesListComponent = (props) => {
             setFromStation(null)
             setToStation(null)
         }
-    }, [ RouteList ])
+    }, [RouteList])
 
     useEffect(() => {
         if (AirportList.length) {
             setAirportListArray(AirportList)
         }
-    }, [ AirportList ])
+    }, [AirportList])
 
     const fetchRoutes = () => {
         props.getRoutes()
@@ -61,7 +61,7 @@ const RoutesListComponent = (props) => {
     const handleDelete = (id) => {
         props.deleteRoute(id)
     }
-    
+
     return (
         <Fragment>
             <div>
@@ -69,18 +69,20 @@ const RoutesListComponent = (props) => {
                     <div className='header'> LIST OF ROUTES </div>
                     <div>
                         <table>
-                            <tr className='tableTitle'>
-                                <th>FROM</th>
-                                <th>TO</th>
-                                <th>Delete</th>
-                            </tr>
-                            {RouteListArray && RouteListArray.map((data, index) => (
-                              <tr key={index}>
-                                  <td>{data.fromAirportStation.name}</td>
-                                  <td>{data.toAirportStation.name}</td>
-                                  <td><Icon type="delete" onClick={() => handleDelete(data.id)}/></td>
-                              </tr>
-                              ))}
+                            <tbody>
+                                <tr className='tableTitle'>
+                                    <th>FROM</th>
+                                    <th>TO</th>
+                                    <th>Delete</th>
+                                </tr>
+                                {RouteListArray && RouteListArray.map((data, index) => (
+                                    <tr key={index}>
+                                        <td>{data.fromAirportStation.name}</td>
+                                        <td>{data.toAirportStation.name}</td>
+                                        <td><Icon type="delete" onClick={() => handleDelete(data.id)} /></td>
+                                    </tr>
+                                ))}
+                            </tbody>
                         </table>
                     </div>
                 </div>

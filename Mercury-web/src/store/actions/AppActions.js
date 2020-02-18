@@ -26,31 +26,35 @@ export const getAirports = () => async (dispatch) => {
     if (res.status) {
         return dispatch(setAirports(res.data))
     }
-    message.error(res.message)
+    showErroMessage(res.message)
 }
 
-export const addAirport = (data, callback) => async (dispatch) => {
+export const addAirport = (data) => async (dispatch) => {
     const res = await postCall(`/station`, data)
-    if (res.status === 'success') {
+    console.log('sucess', res)
+    if (res.data.message) {
+        showErroMessage(res.data.message)
+    } else if (res.status === 'success') {
         dispatch(setAirports(res.data))
     }
-    message.error(res.message)
 }
 
-export const editAirport = (data, callback) => async (dispatch) => {
+export const editAirport = (data) => async (dispatch) => {
     const res = await putCall(`/station/${data.id}`, data)
+    console.log('sucess', res)
     if (res.status === 'success') {
         dispatch(setAirports(res.data))
     }
-    message.error(res.message)
+    showErroMessage(res.message)
 }
 
-export const deleteAirport = (data, callback) => async (dispatch) => {
-    const res = await deleteCall(`/station/${data.id}`)
+export const deleteAirport = (data) => async (dispatch) => {
+    const res = await deleteCall(`/station/${data}`)
+    console.log('sucess', res)
     if (res.status === 'success') {
         dispatch(setAirports(res.data))
     }
-    message.error(res.message)
+    showErroMessage(res.message)
 }
 
 export const getRoutes = () => async (dispatch) => {
@@ -59,7 +63,7 @@ export const getRoutes = () => async (dispatch) => {
     if (res.status) {
         return dispatch(setRoutes(res.data))
     }
-    message.error(res.message)
+    showErroMessage(res.message)
 }
 
 export const addRoute = (data) => async (dispatch) => {
@@ -67,7 +71,7 @@ export const addRoute = (data) => async (dispatch) => {
     if (res.status) {
         return dispatch(setRoutes(res.data))
     }
-    message.error(res.message)
+    showErroMessage(res.message)
 }
 
 export const deleteRoute = (id) => async (dispatch) => {
@@ -75,7 +79,7 @@ export const deleteRoute = (id) => async (dispatch) => {
     if (res.status) {
         return dispatch(setRoutes(res.data))
     }
-    message.error(res.message)
+    showErroMessage(res.message)
 }
 
 export const analyse = (data, callback) => async (dispatch) => {
@@ -83,5 +87,11 @@ export const analyse = (data, callback) => async (dispatch) => {
     if (res.status) {
         return callback(res.data)
     }
-    message.error(res.message)
+    showErroMessage(res.message)
+}
+
+const showErroMessage = (errMeessage) => {
+    if (errMeessage) {
+        message.error(errMeessage)
+    }
 }
