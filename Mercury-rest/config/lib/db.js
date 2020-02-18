@@ -29,7 +29,7 @@ module.exports.connect = (dbConfig, callback) => {
 
     process.on('SIGINT', function() {
         self.sequelize.close().then(function() {
-            console.log("V!ZZ App stopped... ");
+            console.log("Mercury App stopped... ");
         })
     });
 

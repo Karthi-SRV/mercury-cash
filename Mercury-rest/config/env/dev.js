@@ -19,6 +19,7 @@ module.exports = {
     },
     frontEndUrl: [
         'http://localhost:7000',
+        'http://localhost:9000',
     ],
     JWTSecretKey: 'VQuGMDwLXfJXEDhAqleOlL6BtiUhRnKz',
 };
