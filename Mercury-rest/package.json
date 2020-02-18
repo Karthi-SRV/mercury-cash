@@ -1,0 +1,55 @@
+{
+  "name": "mercury-rest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index",
+    "start-prod": "NODE_ENV=prod node index",
+    "lint": "eslint app",
+    "migrate": "npx sequelize-cli db:migrate",
+    "migrate:reset": "npx sequelize-cli db:migrate:undo:all && npm run migrate",
+    "test": "NODE_ENV=test jest --testTimeout=10000",
+    "pretest": "NODE_ENV=test npm run migrate:reset"
+  },
+  "lint": "eslint app",
+  "pre-commit": [
+    "lint"
+  ],
+  "author": "Calibraint Web Team",
+  "license": "ISC",
+  "dependencies": {
+    "bluebird": "^3.7.2",
+    "body-parser": "^1.19.0",
+    "cookie": "^0.4.0",
+    "cookie-parser": "^1.4.4",
+    "cors": "^2.8.5",
+    "expect.js": "^0.3.1",
+    "express": "^4.17.1",
+    "express-jwt": "^5.3.1",
+    "express-unless": "^0.5.0",
+    "glob": "^7.1.6",
+    "helmet": "^3.21.2",
+    "http-status": "^1.4.2",
+    "lodash": "^4.17.15",
+    "method-override": "^3.0.0",
+    "multer": "^1.4.2",
+    "mysql2": "^2.1.0",
+    "path": "^0.12.7",
+    "sequelize": "^5.21.4",
+    "swagger-ui-express": "^4.1.3",
+    "winston": "^3.2.1"
+  },
+  "devDependencies": {
+    "jest": "^25.1.0",
+    "sequelize-cli": "^5.5.1",
+    "supertest": "^4.0.2"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "/config/"
+    ]
+  }
+}
