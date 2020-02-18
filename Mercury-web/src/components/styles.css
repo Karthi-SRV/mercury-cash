@@ -29,9 +29,6 @@ td, th {
   padding: 8px;
 }
 
-tr:nth-child(even) {
-  background-color: #dddddd;
-}
 
 .tableTitle {
   text-align: center;
@@ -59,4 +56,17 @@ tr:nth-child(even) {
 
 .addRoute {
   margin-left: 15px;
+}
+
+.m-25 {
+  margin: 25px;
+}
+
+.m-t-b-10 {
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.m-f-15 {
+  margin-left: 20px;
 }

@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
 import * as _ from 'lodash';
-import { Icon } from 'antd'
+import { Icon, Button } from 'antd'
 import { getAirports, addAirport, deleteAirport, editAirport } from '../store/actions/AppActions'
 import styles from './styles.css'
 
@@ -53,7 +53,7 @@ const AirportListComponent = (props) => {
 
     return (
         <Fragment>
-            <div>
+            <div className="m-25">
                 <div className='header'> LIST OF AIRPORTS </div>
                 <div>
                     <table>
@@ -82,7 +82,9 @@ const AirportListComponent = (props) => {
                     <span>Name:
             <input type="text" value={name} onChange={(e) => onChangeName(e)}></input>
                     </span><br />
-                    <button type='submit' onClick={createEditAirport} className='addBtn'>{!_.isNull(seletedId) ? 'Edit' : 'Add'}</button>
+                    <div className="m-t-b-15">
+                        <Button type='submit' onClick={createEditAirport} className='addBtn'>{!_.isNull(seletedId) ? 'Edit' : 'Add'}</Button>
+                    </div>
                 </div>
             </div>
         </Fragment>

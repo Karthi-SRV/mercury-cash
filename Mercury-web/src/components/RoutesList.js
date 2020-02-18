@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
 import { getRoutes, getAirports, addRoute, deleteRoute } from '../store/actions/AppActions'
-import { Select, Icon } from 'antd'
+import { Select, Icon, Button } from 'antd'
 
 const { Option } = Select 
 
@@ -65,7 +65,7 @@ const RoutesListComponent = (props) => {
     return (
         <Fragment>
             <div>
-                <div>
+                <div className="m-25">
                     <div className='header'> LIST OF ROUTES </div>
                     <div>
                         <table>
@@ -85,7 +85,7 @@ const RoutesListComponent = (props) => {
                     </div>
                 </div>
                 <div className='selectClass'>
-                    <span>FROM:
+                    <span className="m-f-15">FROM:
                         {
                             AirportListArray && <Select placeholder="Select source" style={{ width: '20%' }} size="large" onChange={onChangeFromStation}>
                                 {
@@ -96,7 +96,7 @@ const RoutesListComponent = (props) => {
                             </Select>
                         }
                     </span>
-                    <span>TO:
+                    <span className="m-f-15">TO:
                         {
                             AirportListArray && <Select placeholder="Select destination" style={{ width: '20%' }} size="large" onChange={onChangeToStation}>
                                 {
@@ -107,7 +107,7 @@ const RoutesListComponent = (props) => {
                             </Select>
                         }
                     </span>
-                    <button type='submit' onClick={addRoute} className='addRoute'>Add</button>
+                    <Button type='submit' onClick={addRoute} className='addRoute'>Add</Button>
                 </div>
             </div>
         </Fragment>
