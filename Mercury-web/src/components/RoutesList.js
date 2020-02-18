@@ -67,29 +67,28 @@ const RoutesListComponent = (props) => {
         <Fragment>
             <div>
                 <div>
-                    <div> LIST OF ROUTES </div>
+                    <div className='header'> LIST OF ROUTES </div>
                     <div>
                         <table>
-                            <tr>
-                                <th>FROM - </th>
+                            <tr className='tableTitle'>
+                                <th>FROM</th>
                                 <th>TO</th>
+                                <th>Delete</th>
                             </tr>
-                            {
-                                RouteListArray && RouteListArray.map((data, index) => (
-                                    <tr key={index}>
-                                        <td>{data.fromAirportStation.name} - </td>
-                                        <td>{data.toAirportStation.name}</td>
-                                        <Icon type="delete" onClick={() => handleDelete(data.id)}/>
-                                    </tr>
-                                ))
-                            }
+                            {RouteListArray && RouteListArray.map((data, index) => (
+                              <tr key={index}>
+                                  <td>{data.fromAirportStation.name}</td>
+                                  <td>{data.toAirportStation.name}</td>
+                                  <td><Icon type="delete" onClick={() => handleDelete(data.id)}/></td>
+                              </tr>
+                              ))}
                         </table>
                     </div>
                 </div>
-                <div>
+                <div className='selectClass'>
                     <span>FROM:
                         {
-                            AirportListArray && <Select placeholder="Select source" size="large" onChange={onChangeFromStation}>
+                            AirportListArray && <Select placeholder="Select source" style={{ width: '20%' }} size="large" onChange={onChangeFromStation}>
                                 {
                                     AirportListArray.map((data, key) => (
                                         <Option key={key} value={data.id}>{data.name}</Option>
@@ -100,7 +99,7 @@ const RoutesListComponent = (props) => {
                     </span>
                     <span>TO:
                         {
-                            AirportListArray && <Select placeholder="Select destination" size="large" onChange={onChangeToStation}>
+                            AirportListArray && <Select placeholder="Select destination" style={{ width: '20%' }} size="large" onChange={onChangeToStation}>
                                 {
                                     AirportListArray.map((data, key) => (
                                         <Option key={key} value={data.id}>{data.name}</Option>
@@ -109,7 +108,7 @@ const RoutesListComponent = (props) => {
                             </Select>
                         }
                     </span>
-                    <button type='submit' onClick={addRoute}>Add</button>
+                    <button type='submit' onClick={addRoute} className='addRoute'>Add</button>
                 </div>
             </div>
         </Fragment>

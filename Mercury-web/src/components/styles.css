@@ -1,0 +1,62 @@
+.header {
+    font-size: 20px;
+    text-align: center;
+    margin: 10px 0 15px 0;
+    font-weight: bold;
+}
+.displayButton {
+  text-align: center;
+}
+
+.btnStyle {
+  margin: 6px;
+  color: crimson;
+  font-size: initial;
+  font-family: auto;
+  line-height: unset;
+  cursor: pointer;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: center;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+.tableTitle {
+  text-align: center;
+}
+
+.addAirport {
+  margin-top: 25px;
+  text-align: center;
+}
+
+.addBtn {
+    margin-top: 25px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.codeInput {
+  margin-right: 20px;
+}
+
+.selectClass {
+  text-align: center;
+  margin: 25px 0 15px 0;
+}
+
+.addRoute {
+  margin-left: 15px;
+}

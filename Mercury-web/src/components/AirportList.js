@@ -2,10 +2,11 @@ import React, { Fragment, useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
-import * as _ from 'lodash';
+import * as _ from 'lodash'
 import 'antd/dist/antd.less'
 import { Icon } from 'antd'
 import { getAirports, addAirport, deleteAirport, editAirport } from '../store/actions/AppActions'
+import styles from './styles.css'
 
 const AirportListComponent = (props) => {
 
@@ -54,33 +55,35 @@ const AirportListComponent = (props) => {
     return (
         <Fragment>
             <div>
-                <div> LIST OF AIRPORTS </div>
+                <div className='header'> LIST OF AIRPORTS </div>
                 <div>
                     <table>
-                        <tr>
+                        <tr className='tableTitle'>
                             <th>Code</th>
                             <th>Name</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
                         </tr>
                         {
                             AirportListArray && AirportListArray.map((data, index) => (
                                 <tr key={index}>
-                                    <td>{data.code} - </td>
+                                    <td>{data.code}</td>
                                     <td>{data.name}</td>
-                                    <Icon type="edit" onClick={() => handleClickEdit(data)} />
-                                    <Icon type="delete" onClick={() => handleDelete(data.id)} />
+                                    <td><Icon type="edit" onClick={() => handleClickEdit(data)} /></td>
+                                    <td><Icon type="delete" onClick={() => handleDelete(data.id)} /></td>
                                 </tr>
                             ))
                         }
                     </table>
                 </div>
-                <div>
+                <div className='addAirport'>
                     <span>Code:
-<input type="text" value={code} onChange={(e) => onChangeCode(e)}></input>
+            <input type="text" value={code} onChange={(e) => onChangeCode(e)} className='codeInput'></input>
                     </span>
                     <span>Name:
-<input type="text" value={name} onChange={(e) => onChangeName(e)}></input>
-                    </span>
-                    <button type='submit' onClick={createEditAirport}>{!_.isNull(seletedId) ? 'Edit' : 'Add'}</button>
+            <input type="text" value={name} onChange={(e) => onChangeName(e)}></input>
+                    </span><br />
+                    <button type='submit' onClick={createEditAirport} className='addBtn'>{!_.isNull(seletedId) ? 'Edit' : 'Add'}</button>
                 </div>
             </div>
         </Fragment>

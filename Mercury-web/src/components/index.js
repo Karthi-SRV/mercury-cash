@@ -2,6 +2,7 @@ import React, { Fragment } from 'react'
 import 'antd/dist/antd.less'
 import { withRouter } from 'react-router-dom'
 import PropTypes from 'prop-types'
+import './styles.css'
 
 const Mercury = (props) => {
     const onClick = () => {
@@ -15,10 +16,12 @@ const Mercury = (props) => {
     }
     return (
         <Fragment>
-            <div>MERCURY CASH</div>
-            <button onClick={onClick}>List of airport</button>
-            <button onClick={onRouteClick}>List of Route</button>
-            <button onClick={onPathClick}>Find path</button>
+            <div className='header'>MERCURY CASH</div>
+            <div className='displayButton'>
+                <button onClick={onClick} className='btnStyle cursor'>List of airport</button>
+                <button onClick={onRouteClick} className='btnStyle'>List of route</button>
+                <button onClick={onPathClick} className='btnStyle'>Find path</button>
+            </div>
         </Fragment>
     )
 }
