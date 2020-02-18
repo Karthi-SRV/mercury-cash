@@ -1,0 +1,26 @@
+{
+  "dev": {
+    "username": "timer",
+    "password": "Spider$05",
+    "database": "airport1",
+    "host": "timer.crhofpllzrki.us-east-1.rds.amazonaws.com",
+    "dialect": "mysql",
+    "operatorsAliases": false
+  },
+  "test": {
+    "username": "timer",
+    "password": "Spider$05",
+    "database": "airport1",
+    "host": "timer.crhofpllzrki.us-east-1.rds.amazonaws.com",
+    "dialect": "mysql",
+    "operatorsAliases": false
+  },
+  "prod": {
+    "username": "timer",
+    "password": "Spider$05",
+    "database": "airport",
+    "host": "timer.crhofpllzrki.us-east-1.rds.amazonaws.com",
+    "dialect": "mysql",
+    "operatorsAliases": false
+  }
+}

@@ -9,8 +9,7 @@ const ApiErrors = require('../errors/api.error')
 const errorMessage = require('../errors/error.messages')
 
 // Model
-const Route = require('../models/Route');
-const Airport = require('../models/Airport');
+const { Airport, Route } = require('../../models');
 
 // Validate given data exits
 exports.validateRoute = async(data) => {
@@ -23,7 +22,7 @@ exports.validateRoute = async(data) => {
     // is fromStation exits then check fromStation exits if fails throw error
     if (
         !_.isNumber(_.get(data, 'fromStation')) ||
-        _.isEmpty(await Airport.findOne({ where: { id: _.get(data, 'toStation'), is_deleted: 0 } }))
+        _.isEmpty(await Airport.findOne({ where: { id: _.get(data, 'toStation'), isDeleted: 0 } }))
     ) {
         throw new ApiErrors(errorMessage.FromStationNotFound);
     }
@@ -31,7 +30,7 @@ exports.validateRoute = async(data) => {
     
     if (
         !_.isNumber(_.get(data, 'toStation')) ||
-        _.isEmpty(await Airport.findOne({ where: { id: _.get(data, 'toStation'), is_deleted: 0 } }))
+        _.isEmpty(await Airport.findOne({ where: { id: _.get(data, 'toStation'), isDeleted: 0 } }))
     ) {
         throw new ApiErrors(errorMessage.ToStationNotFound);
     }
@@ -53,14 +52,14 @@ exports.validateRouteExists = async(fromStation, toStation) => {
                     [Op.and]: [
                         { fromStation: fromStation },
                         { toStation: toStation },
-                        { is_deleted: 0 }
+                        { isDeleted: 0 }
                     ],
                 },
                 {
                     [Op.and]: [
                         { fromStation: toStation },
                         { toStation: fromStation },
-                        { is_deleted: 0 }
+                        { isDeleted: 0 }
                     ],
                 },
             ],
@@ -110,7 +109,7 @@ exports.getRoutesList = async() => {
                 as: 'toAirportStation',
             },
         ],
-        where: { is_deleted: 0 },
+        where: { isDeleted: 0 },
     });
 }
 
@@ -119,7 +118,7 @@ exports.createRoute = async(data) => {
     const route = {
         fromStation: _.get(data, 'fromStation', ''),
         toStation: _.get(data, 'toStation', ''),
-        created_at: new Date(),
+        createdAt: new Date(),
     };
     await Route.create(route);
     return this.getRoutesList()
@@ -128,8 +127,8 @@ exports.createRoute = async(data) => {
 // Delete Route
 exports.deleteRoute = async(id) => {
     const upsertData = {
-        is_deleted: 1,
-        deleted_at: new Date(),
+        isDeleted: 1,
+        deletedAt: new Date(),
     };
     await Route.update(upsertData, { where: { id: id } });
     return this.getRoutesList()
@@ -137,7 +136,7 @@ exports.deleteRoute = async(id) => {
 
 // Verify given route id exits
 exports.routeExists = async(id) => {
-    const route = await Route.findOne({ where: { id: id, is_deleted: 0 } });
+    const route = await Route.findOne({ where: { id: id, isDeleted: 0 } });
     if (_.isEmpty(route)) {
         throw new ApiErrors(errorMessage.RouteNotFound)
     }

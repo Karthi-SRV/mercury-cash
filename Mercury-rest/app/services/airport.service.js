@@ -9,7 +9,7 @@ const ApiErrors = require('../errors/api.error')
 const errorMessage = require('../errors/error.messages')
 
 // Model
-const Airport = require('../models/Airport');
+const { Airport } = require('../../models/');
 
 /**
  * Validate the given body data
@@ -40,7 +40,7 @@ exports.validateAirportData = async(data, id = '') => {
         //  Verify the code already mapped to some other airport
         await this.findAirpotyByCondition({
             code: _.get(data, 'code', ''),
-            is_deleted: 0,
+            isDeleted: 0,
         })
     }
 }
@@ -52,7 +52,7 @@ exports.findAirportExists = async(id, code) => {
             [Op.ne]: id,
         },
         code,
-        is_deleted: 0,
+        isDeleted: 0,
     } });
     // station is present throw error
     if (!_.isEmpty(airport)) {
@@ -71,7 +71,7 @@ exports.findAirpotyByCondition = async(condition) => {
 // Get the Station List
 exports.getAirPortList = async() => {
     return Airport.findAll({ where: {
-        is_deleted: 0,
+        isDeleted: 0,
     } });
 }
 
@@ -80,7 +80,7 @@ exports.createAirport = async(data) => {
     const airport = {
         name: _.get(data, 'name', ''),
         code: _.get(data, 'code', ''),
-        created_at: new Date(),
+        createdAt: new Date(),
     };
     await Airport.create(airport);
     return this.getAirPortList()
@@ -99,8 +99,8 @@ exports.updateAirport = async(data, id) => {
 // Delete the station by station id
 exports.deleteAirport = async(id) => {
     const upsertData = {
-        is_deleted: 1,
-        deleted_at: new Date(),
+        isDeleted: 1,
+        deletedAt: new Date(),
     };
     return this.updateAirportData(upsertData, id)
 }
@@ -115,7 +115,7 @@ exports.updateAirportData = async(upsertData, id) => {
 exports.validateAirportExists = async(id) => {
     const airport = await Airport.findOne({ where: {
         id,
-        is_deleted: 0,
+        isDeleted: 0,
     } });
     if (_.isEmpty(airport)) {
         throw new ApiErrors(errorMessage.AirportNotFound)
