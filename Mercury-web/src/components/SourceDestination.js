@@ -3,17 +3,17 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 import { getAirports, analyse } from '../store/actions/AppActions'
-import { Select } from 'antd'
+import { Select, Button } from 'antd'
 
-const { Option } = Select 
+const { Option } = Select
 
 const SourceDestinationComponent = (props) => {
 
     const { AirportList } = props
     const [AirportListArray, setAirportListArray] = useState([])
-    const [ fromStation, setFromStation ] = useState(null)
-    const [ toStation, setToStation ] = useState([])
-    const [ response, setResponse ] = useState({})
+    const [fromStation, setFromStation] = useState(null)
+    const [toStation, setToStation] = useState([])
+    const [response, setResponse] = useState({})
 
     useEffect(() => {
         fetchAirports()
@@ -38,39 +38,41 @@ const SourceDestinationComponent = (props) => {
     }
 
     const getAnalyse = () => {
-        props.analyse({sourcePort: fromStation, destinationPorts: toStation}, (data) => {
+        props.analyse({ sourcePort: fromStation, destinationPorts: toStation }, (data) => {
             setResponse(data)
         })
     }
 
     return (
         <Fragment>
-            <div> SHORTEST PATH </div>
-            <div>
-                <span>FROM:
+            <div className="m-25">
+                <div className='header'> SHORTEST PATH </div>
+                <div className='selectClass'>
+                    <span>FROM :
                     {
-                        AirportListArray && <Select placeholder="Select source" onChange={onChangeFromStation}>
-                            {
-                                AirportListArray.map((data, key) => (
-                                    <Option key={key} value={data.id}>{data.name}</Option>
-                                ))
-                            }
-                        </Select>
-                    }
-                </span>
-                <span>TO:
+                            AirportListArray && <Select style={{ width: '20%' }} placeholder="Select source" onChange={onChangeFromStation}>
+                                {
+                                    AirportListArray.map((data, key) => (
+                                        <Option key={key} value={data.id}>{data.name}</Option>
+                                    ))
+                                }
+                            </Select>
+                        }
+                    </span>
+                    <span className="m-f-15">TO :
                     {
-                        AirportListArray && <Select placeholder="Select destination" mode="multiple" onChange={onChangeToStation}>
-                            {
-                                AirportListArray.map((data, key) => (
-                                    <Option key={key} value={data.id}>{data.name}</Option>
-                                ))
-                            }
-                        </Select>
-                    }
-                </span>
-                <div> Optimal output: {response.optimalOutput}</div>
-                <button type='submit' onClick={getAnalyse}>Get</button>
+                            AirportListArray && <Select style={{ width: '20%' }} placeholder="Select destination" mode="multiple" onChange={onChangeToStation}>
+                                {
+                                    AirportListArray.map((data, key) => (
+                                        <Option key={key} value={data.id}>{data.name}</Option>
+                                    ))
+                                }
+                            </Select>
+                        }
+                    </span>
+                    <div className="m-t-b-10"> Optimal output: {response.optimalOutput}</div>
+                    <div className="m-t-b-15"><Button type='submit' onClick={getAnalyse}>Get</Button></div>
+                </div>
             </div>
         </Fragment>
     )
