@@ -57,22 +57,24 @@ const AirportListComponent = (props) => {
                 <div className='header'> LIST OF AIRPORTS </div>
                 <div>
                     <table>
-                        <tr className='tableTitle'>
-                            <th>Code</th>
-                            <th>Name</th>
-                            <th>Edit</th>
-                            <th>Delete</th>
-                        </tr>
-                        {
-                            AirportListArray && AirportListArray.map((data, index) => (
-                                <tr key={index}>
-                                    <td>{data.code}</td>
-                                    <td>{data.name}</td>
-                                    <td><Icon type="edit" onClick={() => handleClickEdit(data)} /></td>
-                                    <td><Icon type="delete" onClick={() => handleDelete(data.id)} /></td>
-                                </tr>
-                            ))
-                        }
+                        <tbody>
+                            <tr className='tableTitle'>
+                                <th>Code</th>
+                                <th>Name</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
+                            </tr>
+                            {
+                                AirportListArray && AirportListArray.map((data, index) => (
+                                    <tr key={index}>
+                                        <td>{data.code}</td>
+                                        <td>{data.name}</td>
+                                        <td><Icon type="edit" onClick={() => handleClickEdit(data)} /></td>
+                                        <td><Icon type="delete" onClick={() => handleDelete(data.id)} /></td>
+                                    </tr>
+                                ))
+                            }
+                        </tbody>
                     </table>
                 </div>
                 <div className='addAirport'>
