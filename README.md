@@ -1,4 +1,6 @@
-# Mercury-cash: Shortest path algorithm
+# Mercury-cash: Optimal path algorithm
+
+For a given source point and array of destination points, the app will find the shortest number of hops needed to reach each point in destination array and will return the maximum among them as optimal distance needed to reach the destination array. It will also categorize destination points into reachable points and non reachable points.
 
 ## Frontend: React
 
