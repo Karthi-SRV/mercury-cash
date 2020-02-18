@@ -78,10 +78,10 @@ const AirportListComponent = (props) => {
                     </table>
                 </div>
                 <div className='addAirport'>
-                    <span>Code:
+                    <span>Code :
             <input type="text" value={code} onChange={(e) => onChangeCode(e)} className='codeInput'></input>
                     </span>
-                    <span>Name:
+                    <span>Name :
             <input type="text" value={name} onChange={(e) => onChangeName(e)}></input>
                     </span><br />
                     <div className="m-t-b-15">
