@@ -30,7 +30,7 @@ exports.validateAirportData = async(data, id = '') => {
     } else {
         await this.findAirpotyByCondition({
             code: _.get(data, 'code', ''),
-            is_deleted: false,
+            is_deleted: 0,
         })
     }
 }
@@ -41,7 +41,7 @@ exports.findAirpotyExists = async(id, code) => {
             [Op.ne]: id,
         },
         code,
-        is_deleted: false,
+        is_deleted: 0,
     } });
     if (!_.isEmpty(airport)) {
         throw new ApiErrors(errorMessage.CodeAlreadyExists)
@@ -57,7 +57,7 @@ exports.findAirpotyByCondition = async(condition) => {
 
 exports.getAirPortList = async() => {
     return Airport.findAll({ where: {
-        is_deleted: false,
+        is_deleted: 0,
     } });
 }
 
@@ -96,7 +96,7 @@ exports.updateAirportData = async(upsertData, id) => {
 exports.validateAirportExists = async(id) => {
     const airport = await Airport.findOne({ where: {
         id,
-        is_deleted: false,
+        is_deleted: 0,
     } });
     if (_.isEmpty(airport)) {
         throw new ApiErrors(errorMessage.AirportNotFound)
