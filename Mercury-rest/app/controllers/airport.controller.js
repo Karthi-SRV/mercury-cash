@@ -63,9 +63,7 @@ exports.createAirport = async(req, res) => {
     try {
         await airportService.validateAirportData(req.body) // validate the given data
         const airportList = await airportService.createAirport(req.body); // Add new data into the tables
-        return res.success(res, {
-            data: airportList,
-        });
+        return res.success(res, airportList);
     } catch (err) {
         const error = getError.getErrorMessage(err)
         return res.errorMessage(res, error)
@@ -137,9 +135,7 @@ exports.deleteAirport = async(req, res) => {
         const airportId = _.get(req, 'params.id', '') // Station id
         await airportService.validateAirportExists(airportId) // validate the station exists
         const airportList = await airportService.deleteAirport(airportId); // Delete the station
-        return res.success(res, {
-            data: airportList,
-        });
+        return res.success(res, airportList);
     } catch (err) {
         const error = getError.getErrorMessage(err)
         return res.errorMessage(res, error)

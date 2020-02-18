@@ -25,7 +25,7 @@ describe("Routes", () => {
     })
 
 
-    it('delete airport', async() => {
+    it('delete Route', async() => {
         const routeService = require('../../app/services/routes.service');
         const result = await routeService.deleteRoute(1)
         expect(result.data)

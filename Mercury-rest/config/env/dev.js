@@ -16,6 +16,8 @@ module.exports = {
         username: 'timer',
         password: 'Spider$05',
         connectionTimeout: 3000,
+        dialect: "mysql",
+        operatorsAliases: false
     },
     frontEndUrl: [
         'http://localhost:3000',

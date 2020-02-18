@@ -125,13 +125,13 @@ exports.deleteRoute = async(req, res) => {
     *     }
 */
 exports.analyseRoute = async(req, res) => {
-  try { 
-      const bodyData = req.body;
-      const airports = await routeService.validateSourceAndDestination(bodyData) // Validate the given data
-      const pathDistance = await routeService.calculatingShortestPath(bodyData , airports); // Analyse shortest distance
-      return res.success(res, pathDistance);
-  } catch (err) {
-      const error = getError.getErrorMessage(err)
-      return res.errorMessage(res, error)
-  }
+    try {
+        const bodyData = req.body;
+        const airports = await routeService.validateSourceAndDestination(bodyData) // Validate the given data
+        const pathDistance = await routeService.calculatingShortestPath(bodyData, airports); // Analyse shortest distance
+        return res.success(res, pathDistance);
+    } catch (err) {
+        const error = getError.getErrorMessage(err)
+        return res.errorMessage(res, error)
+    }
 }
