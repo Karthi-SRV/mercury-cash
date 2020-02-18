@@ -18,7 +18,7 @@ module.exports = {
         connectionTimeout: 3000,
     },
     frontEndUrl: [
-        'http://localhost:7000',
+        'http://localhost:3000',
     ],
     JWTSecretKey: 'VQuGMDwLXfJXEDhAqleOlL6BtiUhRnKz',
 };

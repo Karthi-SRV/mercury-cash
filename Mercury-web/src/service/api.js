@@ -1,7 +1,7 @@
 import axios from 'axios'
 import _ from 'lodash'
 
-const API_HOST = process.env.API_URL
+const API_HOST = 'http://localhost:7000/api'
 export const getCall =  ( endpoint, headers = {}, params = null ) =>  (
     axios.get(`${ API_HOST }${ endpoint }`, {
         headers: {
@@ -31,5 +31,5 @@ axios.interceptors.request.use(async(req) => {
 axios.interceptors.response.use( (response) =>
     response.data
 , ((error) => {
-    return error.response.data || error.response
+    return error.response || error.response
 }))
