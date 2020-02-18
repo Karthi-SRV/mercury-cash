@@ -31,18 +31,16 @@ export const getAirports = () => async (dispatch) => {
 
 export const addAirport = (data) => async (dispatch) => {
     const res = await postCall(`/station`, data)
-    console.log('sucess', res)
     if (res.data.message) {
         showErroMessage(res.data.message)
-    } else if (res.status === 'success') {
+    } else if (res.status) {
         dispatch(setAirports(res.data))
     }
 }
 
 export const editAirport = (data) => async (dispatch) => {
     const res = await putCall(`/station/${data.id}`, data)
-    console.log('sucess', res)
-    if (res.status === 'success') {
+    if (res.status) {
         dispatch(setAirports(res.data))
     }
     showErroMessage(res.message)
@@ -50,8 +48,7 @@ export const editAirport = (data) => async (dispatch) => {
 
 export const deleteAirport = (data) => async (dispatch) => {
     const res = await deleteCall(`/station/${data}`)
-    console.log('sucess', res)
-    if (res.status === 'success') {
+    if (res.status) {
         dispatch(setAirports(res.data))
     }
     showErroMessage(res.message)
@@ -59,7 +56,6 @@ export const deleteAirport = (data) => async (dispatch) => {
 
 export const getRoutes = () => async (dispatch) => {
     const res = await getCall(`/route`)
-    console.log('sucess', res)
     if (res.status) {
         return dispatch(setRoutes(res.data))
     }
