@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SourceDestination should render my component without any error 1`] = `ShallowWrapper {}`;
+
+exports[`compare the snapshot to render with empty object 1`] = `ShallowWrapper {}`;

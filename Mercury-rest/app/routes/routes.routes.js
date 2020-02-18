@@ -8,4 +8,6 @@ module.exports = (app) => {
         .post(route.createRoute);
     app.route('/route/:id')
         .delete(route.deleteRoute);
+    app.route('/analyse')
+        .post(route.analyseRoute);
 }

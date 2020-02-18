@@ -1,0 +1,467 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "Mercury.Cash API Documentation",
+        "description": "The detailed documentation of API"
+    },
+    "schemes": [
+        "http"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "host": "localhost:7000",
+    "basePath": "/api",
+    "paths": {
+        "/station": {
+            "get": {
+                "tags": [
+                    "Airports"
+                ],
+                "summary": "Get the list of airports",
+                "description": "Returns a list of all airports",
+                "responses": {
+                    "200": {
+                        "description": "Airport list",
+                        "schema": {
+                            "$ref": "#/definitions/Airports"
+                        }
+                    },
+                    "400": {
+                        "description": "The request is invalid",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "404": {
+                        "description": "The specified resource was not found",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Airports"
+                ],
+                "summary": "Add airport",
+                "description": "Returns a list of all airports after successful creation",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "description": "Airport details",
+                        "schema": {
+                            "type": "object",
+                            "required": [
+                                "name",
+                                "code"
+                            ],
+                            "properties": {
+                                "name": {
+                                    "type": "string"
+                                },
+                                "code": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Airport added",
+                        "schema": {
+                            "$ref": "#/definitions/Airports"
+                        }
+                    },
+                    "400": {
+                        "description": "The request is invalid",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "404": {
+                        "description": "The specified resource was not found",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/station/{stationId}": {
+            "parameters": [
+                {
+                    "name": "stationId",
+                    "in": "path",
+                    "required": true,
+                    "description": "ID of Airport station that we want to find",
+                    "type": "string"
+                }
+            ],
+            "put": {
+                "tags": [
+                    "Airports"
+                ],
+                "summary": "Update airport with given ID",
+                "description": "Edit airport details",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "description": "Airport details with new values of properties",
+                        "schema": {
+                            "type": "object",
+                            "required": [
+                                "name",
+                                "code"
+                            ],
+                            "properties": {
+                                "name": {
+                                    "type": "string"
+                                },
+                                "code": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Airport is updated",
+                        "schema": {
+                            "$ref": "#/definitions/Airports"
+                        }
+                    },
+                    "400": {
+                        "description": "The request is invalid",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "404": {
+                        "description": "The specified resource was not found",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Delete Airport with given ID",
+                "tags": [
+                    "Airports"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Airport is deleted",
+                        "schema": {
+                            "$ref": "#/definitions/Airports"
+                        }
+                    },
+                    "400": {
+                        "description": "The request is invalid",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "404": {
+                        "description": "The specified resource was not found",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/route": {
+            "get": {
+                "tags": [
+                    "Flight Routes"
+                ],
+                "summary": "Get the list of Flight routes",
+                "description": "Returns a list of all Flight routes",
+                "responses": {
+                    "200": {
+                        "description": "Routes list",
+                        "schema": {
+                            "$ref": "#/definitions/FlightRoutes"
+                        }
+                    },
+                    "400": {
+                        "description": "The request is invalid",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "404": {
+                        "description": "The specified resource was not found",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Flight Routes"
+                ],
+                "summary": "Add flight route",
+                "description": "Returns a list of all flight routes after successful creation",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "description": "FLight route details",
+                        "schema": {
+                            "$ref": "#/definitions/FlightRoutes"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Flight route added",
+                        "schema": {
+                            "$ref": "#/definitions/FlightRoutes"
+                        }
+                    },
+                    "400": {
+                        "description": "The request is invalid",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "404": {
+                        "description": "The specified resource was not found",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/route/{routeId}": {
+            "parameters": [
+                {
+                    "name": "routeId",
+                    "in": "path",
+                    "required": true,
+                    "description": "ID of flight route that we want to find",
+                    "type": "string"
+                }
+            ],
+            "delete": {
+                "summary": "Delete flight route with given ID",
+                "tags": [
+                    "Flight Routes"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Flight route is deleted",
+                        "schema": {
+                            "$ref": "#/definitions/FlightRoutes"
+                        }
+                    },
+                    "400": {
+                        "description": "The request is invalid",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "404": {
+                        "description": "The specified resource was not found",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/analyse": {
+            "post": {
+                "tags": [
+                    "Route Analysis"
+                ],
+                "summary": "Analyse route",
+                "description": "Returns a list of reachable, non-reachable nodes with optimal distance",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "description": "Source destination details",
+                        "schema": {
+                            "$ref": "#/definitions/SourceDestinationPair"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Reachable and not reachable nodes with optimal distance",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "reachableNodes": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/Node"
+                                    }
+                                },
+                                "nonReachableNodes": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/Node"
+                                    }
+                                },
+                                "optimalDistance": {
+                                    "type": "number"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "The request is invalid",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "404": {
+                        "description": "The specified resource was not found",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Airport": {
+            "required": [
+                "id",
+                "code"
+            ],
+            "properties": {
+                "id": {
+                    "type": "number",
+                    "uniqueItems": true
+                },
+                "name": {
+                    "type": "string"
+                },
+                "code": {
+                    "type": "string",
+                    "uniqueItems": true
+                },
+                "is_deleted": {
+                    "type": "number"
+                },
+                "created_at": {
+                    "type": "string"
+                },
+                "updated_at": {
+                    "type": "string"
+                },
+                "deleted_at": {
+                    "type": "string"
+                }
+            }
+        },
+        "Airports": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/Airport"
+            }
+        },
+        "FlightRoute": {
+            "required": [
+                "fromStation",
+                "toStation"
+            ],
+            "properties": {
+                "id": {
+                    "type": "number",
+                    "uniqueItems": true
+                },
+                "fromStation": {
+                    "type": "number"
+                },
+                "toStation": {
+                    "type": "number"
+                },
+                "is_deleted": {
+                    "type": "number"
+                },
+                "created_at": {
+                    "type": "string"
+                },
+                "updated_at": {
+                    "type": "string"
+                },
+                "deleted_at": {
+                    "type": "string"
+                },
+                "fromAirportStation": {
+                    "$ref": "#/definitions/Airport"
+                },
+                "toAirportStation": {
+                    "$ref": "#/definitions/Airport"
+                }
+            }
+        },
+        "FlightRoutes": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/FlightRoute"
+            }
+        },
+        "SourceDestinationPair": {
+            "type": "object",
+            "properties": {
+                "sourcePort": {
+                    "type": "number"
+                },
+                "destinationPorts": {
+                    "type": "array",
+                    "items": {
+                        "type": "number"
+                    }
+                }
+            }
+        },
+        "Node": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "number"
+                },
+                "distance": {
+                    "type": "number"
+                },
+                "code": {
+                    "type": "string"
+                }
+            }
+        },
+        "Error": {
+            "required": [
+                "code",
+                "message"
+            ],
+            "properties": {
+                "code": {
+                    "type": "number"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

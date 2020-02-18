@@ -100,3 +100,38 @@ exports.deleteRoute = async(req, res) => {
         return res.errorMessage(res, error)
     }
 }
+
+
+/**
+    * @api {post} 
+    * @apiName /route/analyse
+    * 
+    * @apiBody {string} sourcePort station id.
+    * @apiBody {array} destinationPorts destination ids.
+    *
+    * @apiSuccessExample Success-Response:
+    *     HTTP/1.1 200 OK
+    *     {
+      *       "success": true,
+      *       "data": {}
+    *     }
+    *
+    *
+    * @apiErrorExample Error-Response:
+    *     HTTP/1.1 404 Not Found
+    *     {
+      *        "success":false,
+      *        "message": "Some error"
+    *     }
+*/
+exports.analyseRoute = async(req, res) => {
+  try { 
+      const bodyData = req.body;
+      const airports = await routeService.validateSourceAndDestination(bodyData) // Validate the given data
+      const pathDistance = await routeService.calculatingShortestPath(bodyData , airports); // Analyse shortest distance
+      return res.success(res, pathDistance);
+  } catch (err) {
+      const error = getError.getErrorMessage(err)
+      return res.errorMessage(res, error)
+  }
+}

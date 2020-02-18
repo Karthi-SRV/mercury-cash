@@ -1,4 +1,4 @@
-/* eslint-disable no-unused-vars */
+// eslint-disable no-unused-vars /
 import { getCall, putCall, deleteCall, postCall } from './../../service/api'
 import { message } from 'antd'
 
@@ -7,30 +7,30 @@ export const SET_AIRPORTS = 'SET_AIRPORTS'
 export const SET_ROUTES = 'SET_ROUTES'
 
 // Export Actions
-export function setAirports(issuance) {
+export function setAirports(data) {
     return {
         type: SET_AIRPORTS,
-        payload: issuance,
+        payload: data,
     }
 }
 
-export function setRoutes(issuance) {
+export function setRoutes(data) {
     return {
         type: SET_ROUTES,
-        payload: issuance,
+        payload: data,
     }
 }
 
 export const getAirports = () => async (dispatch) => {
-    const res = await getCall(`/airports`, {})
-    if (res.status === 'success') {
-        dispatch(setAirports(res.data))
+    const res = await getCall(`/station`, {})
+    if (res.status) {
+        return dispatch(setAirports(res.data))
     }
     message.error(res.message)
 }
 
 export const addAirport = (data, callback) => async (dispatch) => {
-    const res = await postCall(`/airport`, data)
+    const res = await postCall(`/station`, data)
     if (res.status === 'success') {
         dispatch(setAirports(res.data))
     }
@@ -38,7 +38,7 @@ export const addAirport = (data, callback) => async (dispatch) => {
 }
 
 export const editAirport = (data, callback) => async (dispatch) => {
-    const res = await putCall(`/airport/${data.id}`, data)
+    const res = await putCall(`/station/${data.id}`, data)
     if (res.status === 'success') {
         dispatch(setAirports(res.data))
     }
@@ -46,7 +46,7 @@ export const editAirport = (data, callback) => async (dispatch) => {
 }
 
 export const deleteAirport = (data, callback) => async (dispatch) => {
-    const res = await deleteCall(`/airport/${data.id}`)
+    const res = await deleteCall(`/station/${data.id}`)
     if (res.status === 'success') {
         dispatch(setAirports(res.data))
     }
@@ -54,33 +54,34 @@ export const deleteAirport = (data, callback) => async (dispatch) => {
 }
 
 export const getRoutes = () => async (dispatch) => {
-    const res = await getCall(`/routes`, {})
-    if (res.status === 'success') {
-        dispatch(setRoutes(res.data))
+    const res = await getCall(`/route`)
+    console.log('sucess', res)
+    if (res.status) {
+        return dispatch(setRoutes(res.data))
     }
     message.error(res.message)
 }
 
-export const addRoute = (data, callback) => async (dispatch) => {
+export const addRoute = (data) => async (dispatch) => {
     const res = await postCall(`/route`, data)
-    if (res.status === 'success') {
-        dispatch(setRoutes(res.data))
+    if (res.status) {
+        return dispatch(setRoutes(res.data))
     }
     message.error(res.message)
 }
 
-export const editRoute = (data, callback) => async (dispatch) => {
-    const res = await putCall(`/route/${data.id}`, data)
-    if (res.status === 'success') {
-        dispatch(setRoutes(res.data))
+export const deleteRoute = (id) => async (dispatch) => {
+    const res = await deleteCall(`/route/${id}`)
+    if (res.status) {
+        return dispatch(setRoutes(res.data))
     }
     message.error(res.message)
 }
 
-export const deleteRoute = (data, callback) => async (dispatch) => {
-    const res = await deleteCall(`/route/${data.id}`)
-    if (res.status === 'success') {
-        dispatch(setRoutes(res.data))
+export const analyse = (data, callback) => async (dispatch) => {
+    const res = await postCall(`/analyse`, data)
+    if (res.status) {
+        return callback(res.data)
     }
     message.error(res.message)
 }
