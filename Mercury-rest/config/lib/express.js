@@ -14,6 +14,10 @@ const JWTSecretKey = require('../../config/env/dev').JWTSecretKey;
 const cookieParser = require('cookie-parser');
 const CONSTANTS = require('../../app/utils/constants');
 
+// Swagger module for api documentation
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('./../../api_docs/swagger.json');
+
 // initialize middlewares
 module.exports.initMiddleware = (app) => {
 
@@ -47,17 +51,8 @@ module.exports.initJwt = (app) => {
     app.use(expressJwt({
         secret: JWTSecretKey,
         getToken: function(req) {
-            if (req.cookies[CONSTANTS.cookieName['qualified-purchaser']]) {
-                return req.cookies[CONSTANTS.cookieName['qualified-purchaser']];
-            }
-            if (req.cookies[CONSTANTS.cookieName.broker]) {
-                return req.cookies[CONSTANTS.cookieName.broker];
-            }
-            if (req.cookies[CONSTANTS.cookieName.admin]) {
-                return req.cookies[CONSTANTS.cookieName.admin];
-            }
-            if (req.cookies[CONSTANTS.cookieName.issuance]) {
-                return req.cookies[CONSTANTS.cookieName.issuance];
+            if (req.cookies[CONSTANTS.cookieName.user]) {
+                return req.cookies[CONSTANTS.cookieName.user];
             }
             return null;
         },
@@ -109,6 +104,11 @@ module.exports.initErrorRoutes = (app) => {
         console.error(err.stack);
         res.status(500).json({ error: err.stack });
     });
+};
+
+// swagger Routes
+module.exports.initSwagger = (app) => {
+    app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 };
 
 // Termination handler
@@ -185,6 +185,9 @@ module.exports.init = (db) => {
     this.initErrorRoutes(app);
 
     this.initMongooseSchemas();
+
+    // Initialize Swagger
+    this.initSwagger(app);
 
     // Initialize Signal Handlers
     this.setupTerminationHandlers();
