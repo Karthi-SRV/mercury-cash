@@ -2,8 +2,7 @@ import React, { Fragment, useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
-import * as _ from 'lodash'
-import 'antd/dist/antd.less'
+import * as _ from 'lodash';
 import { Icon } from 'antd'
 import { getAirports, addAirport, deleteAirport, editAirport } from '../store/actions/AppActions'
 import styles from './styles.css'

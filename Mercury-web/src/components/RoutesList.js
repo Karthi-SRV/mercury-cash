@@ -4,7 +4,6 @@ import PropTypes from 'prop-types'
 
 import { getRoutes, getAirports, addRoute, deleteRoute } from '../store/actions/AppActions'
 import { Select, Icon } from 'antd'
-import 'antd/dist/antd.less'
 
 const { Option } = Select 
 

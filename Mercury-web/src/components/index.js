@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react'
-import 'antd/dist/antd.less'
 import { withRouter } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import './styles.css'
