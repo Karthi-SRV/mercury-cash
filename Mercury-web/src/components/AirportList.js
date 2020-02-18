@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
 import * as _ from 'lodash';
-import 'antd/dist/antd.less'
 import { Icon } from 'antd'
 import { getAirports, addAirport, deleteAirport, editAirport } from '../store/actions/AppActions'
 
@@ -75,10 +74,10 @@ const AirportListComponent = (props) => {
                 </div>
                 <div>
                     <span>Code:
-<input type="text" value={code} onChange={(e) => onChangeCode(e)}></input>
+                        <input type="text" value={code} onChange={(e) => onChangeCode(e)}></input>
                     </span>
                     <span>Name:
-<input type="text" value={name} onChange={(e) => onChangeName(e)}></input>
+                        <input type="text" value={name} onChange={(e) => onChangeName(e)}></input>
                     </span>
                     <button type='submit' onClick={createEditAirport}>{!_.isNull(seletedId) ? 'Edit' : 'Add'}</button>
                 </div>

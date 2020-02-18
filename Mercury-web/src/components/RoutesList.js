@@ -4,7 +4,6 @@ import PropTypes from 'prop-types'
 
 import { getRoutes, getAirports, addRoute, deleteRoute } from '../store/actions/AppActions'
 import { Select, Icon } from 'antd'
-import 'antd/dist/antd.less'
 
 const { Option } = Select 
 
@@ -89,7 +88,7 @@ const RoutesListComponent = (props) => {
                 <div>
                     <span>FROM:
                         {
-                            AirportListArray && <Select placeholder="Select source" size="large" onChange={onChangeFromStation}>
+                            AirportListArray && <Select placeholder="Select source" onChange={onChangeFromStation}>
                                 {
                                     AirportListArray.map((data, key) => (
                                         <Option key={key} value={data.id}>{data.name}</Option>
@@ -100,7 +99,7 @@ const RoutesListComponent = (props) => {
                     </span>
                     <span>TO:
                         {
-                            AirportListArray && <Select placeholder="Select destination" size="large" onChange={onChangeToStation}>
+                            AirportListArray && <Select placeholder="Select destination" onChange={onChangeToStation}>
                                 {
                                     AirportListArray.map((data, key) => (
                                         <Option key={key} value={data.id}>{data.name}</Option>

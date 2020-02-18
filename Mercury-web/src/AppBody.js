@@ -1,5 +1,4 @@
 import React from 'react'
-import 'antd/dist/antd.less'
 import './style.less'
 import { Route } from 'react-router-dom'
 
