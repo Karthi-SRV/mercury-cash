@@ -15,28 +15,47 @@ const SourceDestinationComponent = (props) => {
     const [toStation, setToStation] = useState([])
     const [response, setResponse] = useState({})
 
+    /** @description Similar to componentDidMount. Call only after rendering the component
+    */
     useEffect(() => {
         fetchAirports()
     }, [])
 
+    /**
+    * component didupdate triger whenever AirportList chage 
+    */
     useEffect(() => {
         if (AirportList.length) {
             setAirportListArray(AirportList)
         }
     }, [AirportList])
 
+    /**
+  * provide the action creators for getting thr list of airports
+  */
     const fetchAirports = () => {
         props.getAirports()
     }
 
+    /**
+    * triger when we select the from airport
+    * @param {staring} id if a airport
+    */
     const onChangeFromStation = (id) => {
         setFromStation(id)
     }
 
+    /**
+     * triger when we select the to airport
+     * @param {staring} id if a airport
+     */
     const onChangeToStation = (id) => {
         setToStation(id)
     }
 
+    /**
+     * get the minimum jumps
+     */
     const getAnalyse = () => {
         props.analyse({ sourcePort: fromStation, destinationPorts: toStation }, (data) => {
             setResponse(data)
@@ -45,7 +64,7 @@ const SourceDestinationComponent = (props) => {
 
     return (
         <Fragment>
-            <div className="m-25">
+            <div className="m-25 m-b-10">
                 <div className='header'> SHORTEST PATH </div>
                 <div className='selectClass'>
                     <span>FROM :
