@@ -87,7 +87,7 @@ exports.validateSourceAndDestination = async(data) => {
         id: {
             [Op.in]: stationId,
         },
-        is_deleted: 0,
+        isDeleted: 0,
     } });
 
     // check if all given station is present
