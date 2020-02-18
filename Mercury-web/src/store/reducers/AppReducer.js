@@ -1,6 +1,6 @@
 import { SET_AIRPORTS, SET_ROUTES } from '../actions/AppActions'
 
-export default ( state = { issuance: {} }, { payload, type } ) => {
+export default ( state = { airports: [], routes: [] }, { payload, type } ) => {
     switch ( type ) {
     case SET_AIRPORTS: {
         return Object.assign({}, state, {
