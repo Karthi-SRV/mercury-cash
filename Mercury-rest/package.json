@@ -4,22 +4,26 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index",
     "start-prod": "NODE_ENV=prod node index",
-    "lint": "eslint app"
+    "lint": "eslint app",
+    "migrate": "npx sequelize-cli db:migrate",
+    "migrate:reset": "npx sequelize-cli db:migrate:undo:all && npm run migrate",
+    "test": "NODE_ENV=test jest --coverage --testTimeout=10000",
+    "pretest": "NODE_ENV=test npm run migrate:reset"
   },
   "lint": "eslint app",
   "pre-commit": [
     "lint"
   ],
-  "author": "",
+  "author": "Calibraint Web Team",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
     "cookie": "^0.4.0",
     "cookie-parser": "^1.4.4",
     "cors": "^2.8.5",
+    "expect.js": "^0.3.1",
     "express": "^4.17.1",
     "express-jwt": "^5.3.1",
     "express-unless": "^0.5.0",
@@ -34,5 +38,17 @@
     "sequelize": "^5.21.4",
     "swagger-ui-express": "^4.1.3",
     "winston": "^3.2.1"
+  },
+  "devDependencies": {
+    "jest": "^25.1.0",
+    "sequelize-cli": "^5.5.1",
+    "supertest": "^4.0.2"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "/config/"
+    ]
   }
 }
