@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react'
 import { withRouter } from 'react-router-dom'
 import PropTypes from 'prop-types'
+import { Button } from 'antd'
 import './styles.css'
 
 const Mercury = (props) => {
@@ -17,9 +18,9 @@ const Mercury = (props) => {
         <Fragment>
             <div className='header'>MERCURY CASH</div>
             <div className='displayButton'>
-                <button onClick={onClick} className='btnStyle cursor'>List of airport</button>
-                <button onClick={onRouteClick} className='btnStyle'>List of route</button>
-                <button onClick={onPathClick} className='btnStyle'>Find path</button>
+                <Button onClick={onClick} className='btnStyle cursor'>List of airport</Button>
+                <Button onClick={onRouteClick} className='btnStyle'>List of route</Button>
+                <Button onClick={onPathClick} className='btnStyle'>Find path</Button>
             </div>
         </Fragment>
     )

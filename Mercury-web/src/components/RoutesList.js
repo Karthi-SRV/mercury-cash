@@ -17,13 +17,15 @@ const RoutesListComponent = (props) => {
 
 
     /** @description Similar to componentDidMount. Call only after rendering the component
-     *  @param {object} callBack function
     */
     useEffect(() => {
         fetchRoutes()
         fetchAirports()
     }, [])
 
+    /**
+    * component didupdate triger whenever RouteList chage 
+    */
     useEffect(() => {
         if (RouteList.length) {
             setRouteListArray(RouteList)
@@ -32,32 +34,57 @@ const RoutesListComponent = (props) => {
         }
     }, [RouteList])
 
+    /**
+    * component didupdate triger whenever AirportList chage 
+    */
     useEffect(() => {
         if (AirportList.length) {
             setAirportListArray(AirportList)
         }
     }, [AirportList])
 
+    /**
+    * provide the action creators for getting the list or routes
+    * @param {object} dispatch redux dispatch object
+    */
     const fetchRoutes = () => {
         props.getRoutes()
     }
 
+    /**
+    * provide the action creators for getting thr list of airports
+    */
     const fetchAirports = () => {
         props.getAirports()
     }
 
+    /**
+    * triger when we select the from airport
+    * @param {staring} id if a airport
+    */
     const onChangeFromStation = (id) => {
         setFromStation(id)
     }
 
+    /**
+     * triger when we select the to airport
+     * @param {staring} id if a airport
+     */
     const onChangeToStation = (id) => {
         setToStation(id)
     }
 
+    /**
+    * Add a new route 
+    */
     const addRoute = () => {
         props.addRoute({ fromStation, toStation })
     }
 
+    /**
+    * delete existing route
+    * @param {string} id 
+    */
     const handleDelete = (id) => {
         props.deleteRoute(id)
     }
@@ -65,7 +92,7 @@ const RoutesListComponent = (props) => {
     return (
         <Fragment>
             <div>
-                <div className="m-25">
+                <div className="m-25 m-b-10">
                     <div className='header'> LIST OF ROUTES </div>
                     <div>
                         <table>
@@ -87,7 +114,7 @@ const RoutesListComponent = (props) => {
                     </div>
                 </div>
                 <div className='selectClass'>
-                    <span className="m-f-15">FROM:
+                    <span className="m-f-15">FROM :
                         {
                             AirportListArray && <Select placeholder="Select source" style={{ width: '20%' }} size="large" onChange={onChangeFromStation}>
                                 {
@@ -98,7 +125,7 @@ const RoutesListComponent = (props) => {
                             </Select>
                         }
                     </span>
-                    <span className="m-f-15">TO:
+                    <span className="m-f-15">TO :
                         {
                             AirportListArray && <Select placeholder="Select destination" style={{ width: '20%' }} size="large" onChange={onChangeToStation}>
                                 {
@@ -109,7 +136,9 @@ const RoutesListComponent = (props) => {
                             </Select>
                         }
                     </span>
-                    <Button type='submit' onClick={addRoute} className='addRoute'>Add</Button>
+                    <div className="m-25">
+                        <Button type='submit' onClick={addRoute} className='addRoute'>Add</Button>
+                    </div>
                 </div>
             </div>
         </Fragment>
