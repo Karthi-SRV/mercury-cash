@@ -1,0 +1,106 @@
+@import "../settings/colors";
+@import "../settings/variables";
+@import "../tools/mixins";
+
+/* Ant Button styles here */
+.ant-btn {
+    text-shadow: none;
+    box-shadow: none;
+    border-color: transparent;
+}
+
+.ant-btn-primary {
+    color: @primary-color;
+    background: @secondary-color;
+    min-width: 101px;
+
+    &:hover, &:focus {
+        background-color: @primary-color !important;
+        border-color: @primary-color !important;
+        color: @text-white-primary !important;
+    }
+
+    &.history-btn {
+        min-width: 129px;
+        line-height: 52px;
+        height: 52px;
+    }
+}
+
+.ant-btn-secondary {
+    color: @primary-color;
+    background: transparent;
+    min-width: 101px;
+
+    &:hover, &:focus {
+        color: @primary-color !important;
+        background-color: @secondary-color !important;
+        border-color: transparent !important;
+    }
+}
+
+.ant-btn-danger, .ant-btn-danger:hover {
+    color: @text-white-primary;
+    background-color: @red-darken1;
+    border-color: @red-darken1;
+}
+
+.ant-btn-success, .ant-btn-success:hover {
+    color: @text-white-primary;
+    background-color: @green-darken3;
+    border-color: @green-darken3;
+}
+
+.ant-btn-lg.primaryDarkBtn, .ant-btn.primaryDarkBtn {
+    color: @text-white-primary;
+    background: @primary-color;
+
+    &:hover, &:focus {
+        background-color: @violet  !important;
+        border-color: @violet  !important;
+        color: @text-white-primary !important;
+    }
+}
+
+.ant-btn.violetBtn {
+    color: @text-white-primary;
+    background: @violet;
+
+    &:hover, &:focus {
+        background-color: @violet  !important;
+        border-color: @violet  !important;
+        color: @text-white-primary !important;
+    }
+
+    img {
+        width: 15px;
+    }
+}
+
+.reportsTabContent .ant-btn-lg {
+    height: 48px;
+    min-width: 121px;
+}
+
+.data-view-button .ant-btn-lg, .loginPage .ant-btn-lg, .registerPage .ant-btn-lg, .activationPage .ant-btn-lg, .industriesPage .ant-btn-lg, .forgotPasswordPage .ant-btn-lg {
+    height: 48px;
+    min-width: 154px;
+}
+
+.ant-btn-disabled, .ant-btn.disabled, .ant-btn[disabled], .ant-btn-disabled:hover, .ant-btn.disabled:hover, .ant-btn[disabled]:hover, .ant-btn-disabled:focus, .ant-btn.disabled:focus, .ant-btn[disabled]:focus, .ant-btn-disabled:active, .ant-btn.disabled:active, .ant-btn[disabled]:active, .ant-btn-disabled.active, .ant-btn.disabled.active, .ant-btn[disabled].active {
+    background-color: @grey-lighten1 !important;
+    border-color: @grey-lighten1 !important;
+}
+
+.ant-btn[disabled]:hover {
+    color: rgba(@text-grey-primary, 0.25) !important;
+}
+
+.violetBtn.ant-btn[disabled]:hover:hover {
+    color: @text-white-primary !important;
+}
+
+.editUserButton .ant-btn-lg, .editUserModal .ant-btn-lg {
+    height: 48px;
+    min-width: 161px;
+}

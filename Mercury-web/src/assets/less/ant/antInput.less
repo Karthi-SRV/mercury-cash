@@ -1,0 +1,160 @@
+@import "../settings/colors";
+@import "../settings/variables";
+@import "../tools/mixins";
+
+/* Ant Input styles overwrite here */
+.ant-input {
+    height: 48px;
+    .font-height(14px, 16px, @grey-darken4);
+    border: 1px solid @grey-lighten1;
+    border-radius: @global-border-radius; 
+
+    &::-webkit-input-placeholder {
+        color: @drawerDivider !important;
+    }
+
+    &:hover, &:focus {
+        border-color: @primary-color !important;
+        box-shadow: none;
+    }
+
+    &.ant-error {
+        border-color: @red-darken2;
+    }
+    &.weak {
+        border-color: @text-grey-hint;
+    }
+    &.medium {
+        border-color: @orange;
+    }
+    &.strong {
+        border-color: @green-darken1;
+    }
+
+    &.transparentInput {
+        border: none;
+        padding-left: 0;
+        background: transparent;
+    }
+}
+
+.ant-input[disabled] {
+    background-color: @dividerGrey;
+    color: @text-grey-secondary;
+
+    &:hover {
+        border-color: @grey-lighten1 !important;
+    }
+}
+
+.ant-input-affix-wrapper:hover .ant-input:not(.ant-input-disabled), .ant-input-affix-wrapper:focus .ant-input:not(.ant-input-disabled) {
+    border-color: @primary-color !important;
+}
+
+.loginForm .anticon-eye {
+    color: @primary-color;
+}
+
+.issuanceForm {
+    .ant-input {
+        height: 40px;
+    }
+    .ant-form-item {
+        margin: 0;
+        padding: 0;
+    }
+}
+
+.settingsForm {
+    .ant-row, .ant-col {
+        width: 100%;
+    }
+    .ant-form-item-control {
+        line-height: 32px;
+
+        &.has-error {
+            .ant-form-explain {
+                margin: @spacer4 0 0 0 !important;
+                .font-height(12px, 16px, @red-darken2);
+                min-height: 16px;
+            }
+        }
+    }
+    .ant-input {
+        height: 32px;
+        .font-height(12px, 18px, @text-grey-secondary);
+    }
+    .ant-form-item {
+        margin: 0;
+        padding: 0;
+    }
+}
+
+.uploadDocsNameForm {
+    .ant-row, .ant-col {
+        width: 100%;
+    }
+    .ant-form-item-control {
+        line-height: 32px;
+
+        &.has-error {
+            .ant-form-explain {
+                margin: @spacer4 0 0 0 !important;
+                .font-height(12px, 16px, @red-darken2);
+                min-height: 16px;
+            }
+        }
+    }
+    .ant-input {
+        height: 32px;
+        .font-height(14px, 18px, @text-grey-secondary);
+    }
+    .ant-form-item {
+        margin: 0;
+        padding: 0;
+    }
+}
+
+/* Ant input Auto Select styles here */
+.antAutoSelect {
+    .ant-form-item-control {
+        line-height:1 !important;
+    }
+    
+    .ant-select-auto-complete.ant-select .ant-input {
+        height: 48px !important;
+        line-height: 16px !important;
+    }
+    
+    .ant-select-auto-complete.ant-select .ant-select-selection__rendered {
+        line-height: 48px !important;
+    }
+
+    .has-error .ant-select-focused .ant-select-selection {
+        box-shadow: none;
+    }
+}
+
+/* ant input with search styles here */
+.antSearchInput {
+    .ant-input-sm {
+        height: 40px;
+    }
+}
+
+/* Ant calendar picker styles here */
+.rangePicker .ant-calendar-picker-input {
+    height: 32px;
+    font-size: 12px;
+    line-height: 24px !important;
+    padding-left: 0;
+    border-color: @steperBackgroud;
+
+    &.ant-input-disabled {
+        border-color: @steperBackgroud !important;
+    }
+
+    .ant-calendar-picker-icon {
+        right: 4px;
+    }
+} 

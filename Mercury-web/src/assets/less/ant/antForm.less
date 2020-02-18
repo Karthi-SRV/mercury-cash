@@ -1,0 +1,53 @@
+@import "../settings/colors";
+@import "../settings/variables";
+@import "../tools/mixins";
+
+/* Ant Form styles here */
+.ant-form-item {
+    .ant-form-item-label {
+        line-height: 1;
+        label {
+            .font-height(16px, 20px, @text-grey-hint);
+
+            &::before, &::after {
+                content: '';
+                margin: 0
+            }
+        }
+    }
+
+    .ant-form-item-control {
+        &.has-error {
+            .ant-input, .ant-input:hover {
+                border-color: @red-darken2;
+                background-color: transparent;
+                
+                &:focus {
+                    box-shadow: none;
+                }
+            }
+
+            .ant-form-explain {
+                margin: @spacer8 0 0 0 !important;
+                .font-height(14px, 16px, @red-darken2);
+                min-height: 16px;
+            }
+        }
+        .ant-calendar-picker {
+            width: 100%;
+        }
+    }
+}
+
+.loginForm, .addBrokerForm {
+    label {
+        .font-height(16px, 24px, @grey-lighten4) !important;
+    }
+}
+
+.addIssuanceSteps {
+    padding-top: 16px;
+    label {
+        .font-height(14px, 16px, @grey-lighten4) !important;
+    }
+}
