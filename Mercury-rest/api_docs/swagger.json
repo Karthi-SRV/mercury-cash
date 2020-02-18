@@ -221,7 +221,19 @@
                         "in": "body",
                         "description": "FLight route details",
                         "schema": {
-                            "$ref": "#/definitions/FlightRoutes"
+                            "type": "object",
+                            "required": [
+                                "fromStation",
+                                "toStation"
+                            ],
+                            "properties": {
+                                "fromStation": {
+                                    "type": "number"
+                                },
+                                "toStation": {
+                                    "type": "number"
+                                }
+                            }
                         }
                     }
                 ],
@@ -359,16 +371,16 @@
                     "type": "string",
                     "uniqueItems": true
                 },
-                "is_deleted": {
+                "isDeleted": {
                     "type": "number"
                 },
-                "created_at": {
+                "createdAt": {
                     "type": "string"
                 },
-                "updated_at": {
+                "updatedAt": {
                     "type": "string"
                 },
-                "deleted_at": {
+                "deletedAt": {
                     "type": "string"
                 }
             }
@@ -395,16 +407,16 @@
                 "toStation": {
                     "type": "number"
                 },
-                "is_deleted": {
+                "isDeleted": {
                     "type": "number"
                 },
-                "created_at": {
+                "createdAt": {
                     "type": "string"
                 },
-                "updated_at": {
+                "updatedAt": {
                     "type": "string"
                 },
-                "deleted_at": {
+                "deletedAt": {
                     "type": "string"
                 },
                 "fromAirportStation": {
@@ -451,13 +463,9 @@
         },
         "Error": {
             "required": [
-                "code",
                 "message"
             ],
             "properties": {
-                "code": {
-                    "type": "number"
-                },
                 "message": {
                     "type": "string"
                 }
