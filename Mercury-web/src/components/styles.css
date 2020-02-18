@@ -70,3 +70,24 @@ td, th {
 .m-f-15 {
   margin-left: 20px;
 }
+
+.ant-input {
+  height: 43px !important;
+  width: 25% !important;
+}
+
+.m-l-15 {
+  margin-left: 15px !important;
+}
+
+.m-r-15 {
+  margin-right: 15px !important;
+}
+
+.m-b-10 {
+  margin-bottom: 10px;
+}
+
+.ant-select-selection {
+  margin-left: 10px !important;
+}
