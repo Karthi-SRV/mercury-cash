@@ -20,5 +20,25 @@ module.exports = {
     CodeAlreadyExists: {
         code: httpStatus.EXPECTATION_FAILED,
         message: 'The given airport code already been used',
+    },
+    FromStationNotFound: {
+        code: httpStatus.EXPECTATION_FAILED,
+        message: 'Please provide valid From station',
+    },
+    ToStationNotFound: {
+        code: httpStatus.EXPECTATION_FAILED,
+        message: 'Please provide valid To station',
+    },
+    RouteAlreadyExists: {
+        code: httpStatus.EXPECTATION_FAILED,
+        message: 'The given route already exists',
+    },
+    FromAndToStationNotBeSame: {
+        code: httpStatus.EXPECTATION_FAILED,
+        message: 'From and To Station should not be same',
+    },
+    RouteNotFound: {
+        code: httpStatus.NOT_FOUND,
+        message: 'Route Not found',
     }
 };
