@@ -163,52 +163,57 @@ exports.calculatingShortestPath = async(requestData, airports) => {
     return this.performShortestPathAlgorithm(airports, requestData.sourcePort, requestData.destinationPorts, adjacentNodes);
 }
 
+// Algorithm to find shortest distance
 exports.performShortestPathAlgorithm = async( airports, sourcePort, destinationPorts, adjacentNodes) => {
-    // Algorithm to find shortest distance
-    let maximumLimit = Object.keys(adjacentNodes).length;
+    let maximumLimit = Object.keys(adjacentNodes).length; // maximum number of nodes that can be traversed to reach destination
     let distanceArray = [];
+
+    // looping through destination array to find distance from source
     for (let j=0; j< destinationPorts.length; j++) {
-        let endValue = destinationPorts[j];
-        let temp = [sourcePort];
-        let queue = [];
+        let endValue = destinationPorts[j]; // current end node 
+        let currentNodes = [sourcePort]; // start from source node
+        let visitedNodes = [];
         let distance = 0;
+
         if (sourcePort === endValue) {
-            distance = 0;
-        }
-        else if(_.includes(adjacentNodes[`${sourcePort}`], endValue )) {
-            distance = 1;
+            distance = 0; // if start and end nodes are same
+        } else if(_.includes(adjacentNodes[`${sourcePort}`], endValue )) {
+            distance = 1; // if end nodes and adjacent nodes of start node  are same
         } else {
-            recursiveFun();
+            traversingThroughNodes(); 
         }
-        function recursiveFun() {
-            for (let i = 0; i < temp.length; i++) {
-                if (!_.includes(queue, temp[i])) {
-                    queue.push(temp[i]);
-                    temp[i] = adjacentNodes[`${temp[i]}`];
+
+        /* Function to traverse through the child nodes to find the destination node  */ 
+        function traversingThroughNodes() {
+            for (let i = 0; i < currentNodes.length; i++) {
+                if (!_.includes(visitedNodes, currentNodes[i])) {
+                    visitedNodes.push(currentNodes[i]); // marking current nodes as visited nodes
+                    currentNodes[i] = adjacentNodes[`${currentNodes[i]}`]; // replacing the current nodes with its child nodes
                 } else {
-                    temp.splice(i, 1, '');
+                    currentNodes.splice(i, 1, ''); // removing already visited nodes
                 }
             }
-            // Removing empty values, Performing unique values in an array and store in uniq
-            const uniq = _.compact(_.flattenDeep(_.uniq(temp)));
-            if (_.includes(_.flattenDeep(temp), endValue)) {
-                distance++;
+
+            /* Transforming [[[], [1,2], [1,2]]] into [1,2] by removing 
+            repeated values(_uniq), invalid values(compact) and
+            flattening the inner array(flattenDeep) */
+            currentNodes = _.compact(_.flattenDeep(_.uniq(currentNodes)));
+
+            if (_.includes(currentNodes, endValue)) {
+                distance++; // if end node is found in child nodes
                 return;
-            } else {
-                temp = uniq;
-                distance++;
-                if(distance <= maximumLimit ) {
-                    recursiveFun();
-                } else {
-                    distance = 0;
-                    return;
-                }
+            } else if (distance > maximumLimit) {
+                distance = 0; // if node is not found even after traversing through all nodes
+                return; 
+            }   else {
+                distance++; // if node is not found in child nodes
+                traversingThroughNodes(); // continues traversing through next set of child nodes
             }
         }
         distanceArray[j] = distance;
     }
     let reachableNodes = [];
-    let  nonReachableNodes = [];
+    let nonReachableNodes = [];
     for (let i =0; i < destinationPorts.length; i++) {
         if (distanceArray[i] > 0) {
             reachableNodes.push({ id: destinationPorts[i], distance: distanceArray[i], code: _.find(airports, { id: destinationPorts[i] }).code})
