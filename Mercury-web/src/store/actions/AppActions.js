@@ -77,3 +77,11 @@ export const deleteRoute = (id) => async (dispatch) => {
     }
     message.error(res.message)
 }
+
+export const analyse = (data, callback) => async (dispatch) => {
+    const res = await postCall(`/analyse`, data)
+    if (res.status) {
+        return callback(res.data)
+    }
+    message.error(res.message)
+}
