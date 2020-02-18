@@ -1,0 +1,168 @@
+@import "../settings/colors";
+@import "../settings/variables";
+@import "../tools/mixins";
+
+/* Ant Checkbox styles overwrite here */
+.ant-checkbox-wrapper {
+    .ant-checkbox {
+        .ant-checkbox-inner {
+            border: 1px solid @grey-lighten1;
+            border-radius: 0;
+        }
+
+        &.ant-checkbox-checked {
+         .ant-checkbox-inner {
+            background-color: @text-white-primary;
+            border-color: @grey-lighten1;
+
+            &::after {
+                border-bottom: 1px solid @primary-color !important;
+                border-right: 1px solid @primary-color !important;
+                left: 3px !important; 
+            }
+         }   
+        }
+    }
+}
+
+.lg-checkbox {
+    .ant-checkbox {
+        .ant-checkbox-inner {
+            border-radius: @global-border-radius;
+            .size(32px);
+        }
+        &.ant-checkbox-checked {
+            .ant-checkbox-inner {
+               &::after {
+                   top: 14px !important;
+                   left: 7px !important;
+                   width: 9.714286px !important;
+                   height: 19.142857px !important;
+                   border-bottom: 2px solid @primary-color !important;
+                   border-right: 2px solid @primary-color !important;
+               }
+            }   
+        }
+
+        &:hover .ant-checkbox-inner {
+            border-color: @primary-color;
+        }
+    }
+}
+
+.lg-checkbox48 {
+    .ant-checkbox {
+        .ant-checkbox-inner {
+            border-radius: @global-border-radius;
+            .size(48px);
+        }
+        &.ant-checkbox-checked {
+            .ant-checkbox-inner {
+               &::after {
+                    top: 19px !important;
+                    left: 10px !important;
+                    width: 15.714286px !important;
+                    height: 31.142857px !important;
+                    border-bottom: 2px solid @primary-color !important;
+                    border-right: 2px solid @primary-color !important;
+               }
+            }   
+        }
+    }
+}
+
+
+.lg-checkbox20 {
+    .ant-checkbox {
+        .ant-checkbox-inner {
+            border-radius: @global-border-radius;
+            .size(20px);
+        }
+        &.ant-checkbox-checked {
+            .ant-checkbox-inner {
+               &::after {
+                    top: 8px !important;
+                    left: 4px !important;
+                    width: 6px !important;
+                    height: 13px !important;
+                    border-bottom: 2px solid @primary-color !important;
+                    border-right: 2px solid @primary-color !important;
+               }
+            }   
+        }
+    }
+}
+
+.darkBg, .issuanceDataTable, .dealRoomDataTable, .userDataTable {
+    .ant-checkbox.ant-checkbox-checked {
+        .ant-checkbox-inner {
+            background-color: @primary-color;
+            border-color: @primary-color;
+        }
+        &.ant-checkbox-checked {
+            .ant-checkbox-inner {
+               &::after {
+                    border-bottom-color: @text-white-primary !important;
+                    border-right-color: @text-white-primary !important;
+               }
+            }   
+        }
+    }
+}
+
+.organizationTable {
+    .ant-checkbox-inner {
+        border: 1px solid @text-grey-primary !important;
+    }
+}
+
+.superAdminTable, .issuanceDataTable, .dealRoomDataTable, .userDataTable, .dropdownGroup, .issuanceFilterDrawer, .brokerDealerLists, .industriesPage, .industriesSettings, .issuanceViewers, .registerSettings {
+    .ant-checkbox-inner {
+        border-radius: @border_radius_md !important;
+    }
+}
+    
+.addBrokerModal, .editUserModal {
+    .ant-checkbox-wrapper + span, .ant-checkbox + span {
+        padding-right: 0;
+        padding-left: @spacer16;
+        color: @text-grey-hint;
+    }
+}
+    
+.industriesPage, .issuanceViewers, .registerSettings {
+    .ant-checkbox-wrapper + span, .ant-checkbox + span {
+        padding-right: 0;
+        padding-left: @spacer12;
+        color: @grey-darken4;
+    }
+}    
+
+.industriesSettings {
+    .ant-checkbox-wrapper + span, .ant-checkbox + span {
+        padding-right: 0;
+        padding-left: @spacer16;
+        color: @grey-darken4;
+    }
+}
+
+.issuanceFilterDrawer {
+    .ant-checkbox-wrapper {
+        display: inline-block;
+        width: 50%;
+        & + .ant-checkbox-wrapper {
+            margin: @spacer8 0 0 0;
+        }
+    }
+    .ant-checkbox-wrapper + span, .ant-checkbox + span {
+        padding-right: 0;
+        padding-left: @spacer16;
+        color: @grey-darken4;
+    }
+}
+
+.registryVisibilityCheckbox {
+    .ant-checkbox-wrapper + .ant-checkbox-wrapper {
+        margin: @spacer8 0 0 0;
+    }
+}

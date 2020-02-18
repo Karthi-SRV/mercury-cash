@@ -1,0 +1,170 @@
+@import "../settings/colors";
+@import "../settings/variables";
+@import "../tools/mixins";
+
+/* Ant Select styles overwrite here */
+.ant-select {
+    width: 100%;
+    font-size: 14px;
+
+    .ant-select-selection-selected-value {
+        color: @grey-darken4;
+    }
+    .ant-select-selection__placeholder {
+        color: @drawerDivider;
+    }
+}
+
+.ant-select-lg {
+    .ant-select-selection--single {
+        height: 48px !important;
+        padding-bottom: 0;
+        border-radius: @global-border-radius;
+    
+        &:hover {
+            border-color: @primary-color;
+        }
+        &:focus {
+            border-color: @primary-color;
+            box-shadow: none;
+        }
+    }
+    .ant-select-selection__rendered {
+        line-height: 46px;
+    }
+}
+
+.ant-select-lg .ant-select-selection--multiple {
+    height: 48px;
+    padding-bottom: 0;
+    border-radius: @global-border-radius;
+
+    &:hover {
+        border-color: @primary-color;
+    }
+    &:focus {
+        border-color: @primary-color;
+        box-shadow: none;
+    }
+}
+
+.ant-select-selection--multiple .ant-select-selection__placeholder {
+    margin-left: 0;
+}
+
+.ant-select-selection--multiple .ant-select-selection__rendered > ul > li {
+    margin-top: 7px;
+
+    &.ant-select-selection__choice {
+        background: @dividerGrey;
+        border: 1px solid @grey-lighten1;
+        border-radius: @border_radius_sm;
+        padding: 0 28px 0 @spacer8;
+
+        .ant-select-selection__choice__content {
+            color: @text-grey-hint;
+        }
+
+        .ant-select-selection__choice__remove {
+            font-size: 15px;
+            right: 7px;
+            top: -3px;
+            color: @text-grey-hint;
+        }
+    }
+}
+
+.ant-select-lg .ant-select-selection__rendered {
+    line-height: 46px;
+    margin-left: 11px;
+}
+
+.ant-select-focused .ant-select-selection, .ant-select-selection:focus, .ant-select-selection:active {
+    border-color: @primary-color;
+    border-right-width: 1px !important;
+    outline: 0;
+    box-shadow: none;
+}
+
+.ant-select.ant-error .ant-select-selection {
+    border-color: @red-darken2;
+}
+
+.has-error {
+    .ant-select-selection {
+        border-color: @red-darken2;
+    
+        &:hover {
+            border-color: @red-darken2;
+        }
+    }
+    .ant-select-arrow {
+        color: @red-darken2;
+    }
+}
+
+.SelectTransparent {
+    .ant-select-selection {
+        border: none;
+        background-color: transparent;
+
+        .ant-select-selection__rendered {
+            margin: 0;
+        }
+    }
+}
+
+.settingsForm {
+    .ant-select-selection {
+        height: 32px !important;
+        .font-height(12px, 18px, @text-grey-secondary);
+        border-radius: 0;
+        border-color: transparent;
+        background: transparent;
+    }
+    .ant-select-lg {
+        .ant-select-selection__rendered {
+            margin-left: 0;
+            line-height: 32px;
+        }
+        .ant-select-selection--single:hover, .ant-select-selection--single:focus {
+            border-color: transparent !important;
+        }
+    }
+}
+
+.issuanceDetailsSection {
+    .ant-form-item {
+        margin-bottom: @spacer8 !important;
+        .ant-form-item-control {
+            line-height: unset;
+        }
+    }
+    .ant-select {
+        font-size: 12px;
+        .ant-select-selection {
+            border-color: @steperBackgroud;
+        }
+        .ant-select-selection--single {
+            border-radius: @global-border-radius;
+        
+            &:hover {
+                border-color: @primary-color;
+            }
+            &:focus {
+                border-color: @primary-color;
+                box-shadow: none;
+            }
+        }
+    }
+}
+
+.snapshotDetailsSelect {
+    max-width: 250px;
+    .ant-select-selection-selected-value {
+        .font(18px, 24px, 600, @grey-darken4);
+    }
+    .ant-select-arrow {
+        color: @grey-darken4;
+    }
+}
