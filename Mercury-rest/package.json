@@ -1,0 +1,37 @@
+{
+  "name": "mercury-rest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index",
+    "start-prod": "NODE_ENV=prod node index",
+    "lint": "eslint app"
+  },
+  "lint": "eslint app",
+  "pre-commit": [
+    "lint"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cookie": "^0.4.0",
+    "cookie-parser": "^1.4.4",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-jwt": "^5.3.1",
+    "express-unless": "^0.5.0",
+    "glob": "^7.1.6",
+    "helmet": "^3.21.2",
+    "http-status": "^1.4.2",
+    "lodash": "^4.17.15",
+    "method-override": "^3.0.0",
+    "multer": "^1.4.2",
+    "mysql2": "^2.1.0",
+    "path": "^0.12.7",
+    "sequelize": "^5.21.4",
+    "winston": "^3.2.1"
+  }
+}
